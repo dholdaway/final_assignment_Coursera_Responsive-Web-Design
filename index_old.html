@@ -44,11 +44,25 @@
     </ul>
 
       <br/>
+      <div id="breadcrumb">
+                    </div>
 
       <div id="contentMAIN"  class="container-fluid"  role="main"></div>
   </div> <!-- / container -->
 
 	<div id="ModalSHOW"></div>
+
+    <script id="breadcrumb-template" type="text/x-handlebars-template">
+           <ul class="breadcrumb">
+               <li title="home"><span class="glyphicon glyphicon-home"></span></li>
+               {{#if category}}
+               <li title="category">{{category}}</li>
+               {{/if}}
+               {{#if animal}}
+               <li title="animal">{{animal}}</li>
+               {{/if}}
+           </ul>
+       </script>
 
 <script id="animals-template" type="text/x-handlebars-template">
     <div class="row container-fluid">

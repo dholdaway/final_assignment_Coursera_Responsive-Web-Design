@@ -68,66 +68,25 @@ $(document).ready(function() {
     $("#animals-tab").click();
 
 
-//});
+});
 
-// the search functionality
-    // this happens when a key is pressed
-    // inside the search box
-    $("#searchbox").keypress(function (e) {
-        current_data = animals_data;
-        //e.preventDefault();
-
-      // check if the key that was pressed
-      // is the return key (it has id 13)
-      // and only do the search if it is
-      if (e.which == 13) {
-
-        // get the search text which is the
-        // contents of the search box
-        var search_text = $("#searchbox").val();
-
-        // print the search box
-        // (this is an example of using
-        // console.log for debugging)
-        console.log(search_text) //added to git
-
-        // create a new array of data with only
-        // the data that contains the search string
-        var filteredData = {
-            category:animals_data.category.filter(function(d, index) {
-
-
-          // use the filter function which returns
-          // a new array that contains only the
-          // elements of data.images for which
-          // the function returns true
-         // category: animals.name.filter(function(d){
-         //category: category.name.filter(function(d){
-            // return true if the name contains
-            // the search text
-            if (d.name.search(search_text) > -1){
-              return true;
-            }
-
-            // return true if the category contains
-            // the search text
-            //if (d.category.search(search_text) > -1){
-            //  return true;
-        //    }
-
-            // if we reach here it means we haven't
-            // found a match so return false
-            return false;
-          })
-        };
-
-        // pass the newly filtered data into
-        // the template to generate new html
-        var html    = template(filteredData);
-        $("#contentMAIN").html(html);
-
-        // display the modal when you click on a thumbnail
-        $(".animalsThumbnail").click(ModalSHOW);
-      }
-    });
+$('#searchbox').keypress(function(e){
+  if(e.which ==13){
+    var search_text = $('#searchbox').val();
+    console.log(search_text)
+    var filteredData ={
+      category: animals_data.category.filter(function(d){
+        if(d.name.search(search_text) > -1){
+          return true;
+        }
+        if(d.description.search(search_text) > -1){
+          return true;
+        }
+        return false;
+      })
+    };
+    var html = template(filteredData);
+    $('#contentMAIN').html(html);
+  }
+});
 });
