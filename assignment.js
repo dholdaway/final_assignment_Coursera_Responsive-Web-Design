@@ -69,11 +69,11 @@ $(document).ready(function() {
 
 });
 
-$("#searchText").keypress(function(e) {
+$("#searchbox").keypress(function(e) {
     current_data = animals_data;
     if (e.which == 13) {
 
-        var target = $("#searchText").val();
+        var target = $("#searchbox").val();
 
         var times = 0;
         var isAnimal = false;
