@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Animal World</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- include our libraries and css files -->
+
+<script src="js/jquery-2.1.4.min.js"></script>
+<script src="js/handlebars-v3.0.3.js"></script>
+
+<script src="js/bootstrap.min.js"></script>
+<script src="AnimalsData.js"></script>
+<script src="assignment.js"></script>
+
+<link href='https://fonts.googleapis.com/css?family=Chicle' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Asset' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Neuton:400,700,800' rel='stylesheet' type='text/css'>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="assignment.css" rel="stylesheet">
+
+</head>
+  <body>
+
+    <div class="container-fluid">
+        <div class="jumbotron container-fluid vertical-center"><h1>Animal World</h1><p>The Wonderful World of Animals</div>
+      <ul class="nav nav-tabs container-fluid">
+            <li id="animals-tab"><a href="#">Animals</a></li>
+            <li id="category-tab"><a href="#category">Category</a></li>
+              <!-- <li> <div class="form-group">
+                   <form class="navbar-form navbar-right" role="search">
+                   <input type="text" id="searchText" class="form-control" placeholder="Search">
+           </form></li> -->
+          <div class="form-group">
+                <div class="navbar-form navbar-right">
+      <input id="searchbox" type="text" class="form-control" placeholder="Search...">
+    </div>
+        </form></div>
+
+
+    </ul>
+
+      <br/>
+
+      <div id="contentMAIN"  class="container-fluid"  role="main"></div>
+  </div> <!-- / container -->
+
+	<div id="ModalSHOW"></div>
+
+<script id="animals-template" type="text/x-handlebars-template">
+    <div class="row container-fluid">
+        {{#each category}}
+            <div class="col-xs-12 col-md-4">
+            <div class="categoryThumbnail thumbnail" data-id="{{@index}}">
+                        <img class="category" src="{{categoryimage}}" alt="{{name}}">
+                        <div id="description">
+                            <p span id="categoryName">Contains {{animals.length}} types of {{name}}</p>
+                        </div>
+                    </div>
+            </div>
+        {{/each}}
+    </div>
+</script>
+
+<script id="category-template" type="text/x-handlebars-template">
+    <div class="row">
+        {{#each animals}}
+            <div class="col-xs-6 col-md-3">
+                    <div class="animalsThumbnail thumbnail" data-id="{{@index}}">
+                        <img class="animals" src="{{image1}}" alt="{{name}}">
+                        <div id="description">
+                            <h4 id="categoryName"> {{name}} </h4>
+                        </div>
+                    </div>
+            </div>
+        {{/each}}
+    </div>
+</script>
+
+<script id="modal-template" type="text/x-handlebars-template">
+<div id="animalModal" class="modal modal-message fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img style="width:100%" src="{{image2}}"/>
+                    <hr>
+                    <h3 class="nameinmodal">{{name}}</h3>
+                    <hr>
+                    <p class="model_description">{{description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>
+
+<!-- <div id="modal-warning" class="modal modal-message modal-warning fade" style="display: none;" aria-hidden="true"> -->
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted">Animal World by Darren Holdaway </p>
+    </div>
+    </footer>
+
+  </body>
+</html>
