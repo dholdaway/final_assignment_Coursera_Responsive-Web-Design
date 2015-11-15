@@ -33,7 +33,8 @@
                    <input type="text" id="searchText" class="form-control" placeholder="Search">
            </form></li> -->
            <div class="form-group">
-   <div class="navbar-form navbar-right"><form>
+   <div class="navbar-form navbar-right">
+       <form id="form-search">
             <input id="searchbox" type="text" class="form-control" placeholder="Search....">
          </form>
  </div>
@@ -53,10 +54,11 @@
     <div class="row container-fluid">
         {{#each category}}
             <div class="col-xs-12 col-md-4">
+                <h1 style="text-align:center"> {{name}} </h1>
             <div class="categoryThumbnail thumbnail" data-id="{{@index}}">
                         <img class="category" src="{{categoryimage}}" alt="{{name}}">
                         <div id="description">
-                            <p span id="categoryName">Contains {{animals.length}} types of {{name}}</p>
+                            <p span id="categoryName">Contains {{animals.length}} types of <b>{{name}}</b></p>
                         </div>
                     </div>
             </div>

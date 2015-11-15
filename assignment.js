@@ -67,12 +67,14 @@ $(document).ready(function() {
 
     $("#animals-tab").click();
 
-});
+
+//});
 
 // the search functionality
     // this happens when a key is pressed
     // inside the search box
     $("#searchbox").keypress(function (e) {
+        //e.preventDefault();
 
       // check if the key that was pressed
       // is the return key (it has id 13)
@@ -97,7 +99,7 @@ $(document).ready(function() {
           // elements of data.images for which
           // the function returns true
          // category: animals.name.filter(function(d){
-         name: animals_data.category.animals.name.filter(function(d){
+         category: category.name.filter(function(d){
             // return true if the name contains
             // the search text
             if (d.name.search(search_text) > -1){
@@ -125,3 +127,4 @@ $(document).ready(function() {
         $(".animalsThumbnail").click(ModalSHOW);
       }
     });
+});
