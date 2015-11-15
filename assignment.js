@@ -72,7 +72,7 @@ $(document).ready(function() {
 // the search functionality
     // this happens when a key is pressed
     // inside the search box
-    $('#searchbox').keypress(function (e) {
+    $("#searchbox").keypress(function (e) {
 
       // check if the key that was pressed
       // is the return key (it has id 13)
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
         // get the search text which is the
         // contents of the search box
-        var search_text = $('#searchbox').val();
+        var search_text = $("#searchbox").val();
 
         // print the search box
         // (this is an example of using
@@ -96,15 +96,15 @@ $(document).ready(function() {
           // a new array that contains only the
           // elements of data.images for which
           // the function returns true
-          images: animals_data.category.animals.name.filter(function(d){
-
-            // return true if the title contains
+         // category: animals.name.filter(function(d){
+         name: animals_data.category.animals.name.filter(function(d)){
+            // return true if the name contains
             // the search text
             if (d.name.search(search_text) > -1){
               return true;
             }
 
-            // return true if the author contains
+            // return true if the category contains
             // the search text
             if (d.category.search(search_text) > -1){
               return true;
@@ -119,9 +119,9 @@ $(document).ready(function() {
         // pass the newly filtered data into
         // the template to generate new html
         var html    = template(filteredData);
-        $('#contentMAIN').html(html);
+        $("#contentMAIN").html(html);
 
         // display the modal when you click on a thumbnail
-        $('.animalsThumbnail').click(ModalSHOW);
+        $(".animalsThumbnail").click(ModalSHOW);
       }
     });
