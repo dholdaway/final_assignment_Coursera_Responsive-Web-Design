@@ -74,6 +74,7 @@ $(document).ready(function() {
     // this happens when a key is pressed
     // inside the search box
     $("#searchbox").keypress(function (e) {
+        current_data = animals_data;
         //e.preventDefault();
 
       // check if the key that was pressed
@@ -93,13 +94,15 @@ $(document).ready(function() {
         // create a new array of data with only
         // the data that contains the search string
         var filteredData = {
+            category:animals_data.category.filter(function(d, index) {
+
 
           // use the filter function which returns
           // a new array that contains only the
           // elements of data.images for which
           // the function returns true
          // category: animals.name.filter(function(d){
-         category: category.name.filter(function(d){
+         //category: category.name.filter(function(d){
             // return true if the name contains
             // the search text
             if (d.name.search(search_text) > -1){
@@ -108,9 +111,9 @@ $(document).ready(function() {
 
             // return true if the category contains
             // the search text
-            if (d.category.search(search_text) > -1){
-              return true;
-            }
+            //if (d.category.search(search_text) > -1){
+            //  return true;
+        //    }
 
             // if we reach here it means we haven't
             // found a match so return false
