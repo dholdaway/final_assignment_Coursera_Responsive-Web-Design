@@ -69,56 +69,59 @@ $(document).ready(function() {
 
 });
 
-$("#searchbox").keypress(function(e) {
-    current_data = animals_data;
-    if (e.which == 13) {
+// the search functionality
+    // this happens when a key is pressed
+    // inside the search box
+    $('#searchbox').keypress(function (e) {
 
-        var target = $("#searchbox").val();
+      // check if the key that was pressed
+      // is the return key (it has id 13)
+      // and only do the search if it is
+      if (e.which == 13) {
 
-        var times = 0;
-        var isAnimal = false;
+        // get the search text which is the
+        // contents of the search box
+        var search_text = $('#searchbox').val();
 
+        // print the search box
+        // (this is an example of using
+        // console.log for debugging)
+        console.log(search_text)
 
-        var filterData = {
-            class: animals.category.filter(function(d, index) {
+        // create a new array of data with only
+        // the data that contains the search string
+        var filteredData = {
 
-                if (d.name.search(target) > -1) {
-                    pos = index;
+          // use the filter function which returns
+          // a new array that contains only the
+          // elements of data.images for which
+          // the function returns true
+          images: animals_data.category.animals.name.filter(function(d){
 
-                    return true;
-                }
-
-                for(var i = 0; i < d.animals.length; i++) {
-                    var animalName = d.animals[i].name;
-                    if(animalName.search(target) > -1) {
-                        pos = index;
-                        isAnimal = true;
-                        return true;
-                    }
-                }
-                times = times + 1;
-                return false;
-            })
-        };
-
-        if(times < 3) {
-
-
-            current_category = animals.category[pos];
-            current_data = filterData;
-            if(isAnimal) {
-                $("#category-tab").click();
-            } else {
-
-                $("#animals-tab").click();
+            // return true if the title contains
+            // the search text
+            if (d.name.search(search_text) > -1){
+              return true;
             }
 
-        } else {
-            show(animals_template, animals);
-            alert("Not found: " + target);
-        }
+            // return true if the author contains
+            // the search text
+            if (d.category.search(search_text) > -1){
+              return true;
+            }
 
+            // if we reach here it means we haven't
+            // found a match so return false
+            return false;
+          })
+        };
 
+        // pass the newly filtered data into
+        // the template to generate new html
+        var html    = template(filteredData);
+        $('#contentMAIN').html(html);
 
-    };
-});
+        // display the modal when you click on a thumbnail
+        $('.animalsThumbnail').click(ModalSHOW);
+      }
+    });
