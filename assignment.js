@@ -86,7 +86,7 @@ $(document).ready(function() {
         // print the search box
         // (this is an example of using
         // console.log for debugging)
-        console.log(search_text)
+        console.log(search_text) //added to git
 
         // create a new array of data with only
         // the data that contains the search string
