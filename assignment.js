@@ -97,7 +97,7 @@ $(document).ready(function() {
           // elements of data.images for which
           // the function returns true
          // category: animals.name.filter(function(d){
-         name: animals_data.category.animals.name.filter(function(d)){
+         name: animals_data.category.animals.name.filter(function(d){
             // return true if the name contains
             // the search text
             if (d.name.search(search_text) > -1){
