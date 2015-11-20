@@ -1,4 +1,3 @@
-
 var animals_template, category_template, modal_template;
 
 var current_category, current_data, pos;
@@ -65,28 +64,28 @@ $(document).ready(function() {
         });
     });
 
+
     $("#animals-tab").click();
 
-
-});
-
-$('#searchbox').keypress(function(e){
-  if(e.which ==13){
-    var search_text = $('#searchbox').val();
-    console.log(search_text)
-    var filteredData ={
-      category: animals_data.category.filter(function(d){
-        if(d.name.search(search_text) > -1){
-          return true;
+    $("#searchbox").keypress(function(e) {
+        if (e.which == 13) {
+            var search_text = $('#searchbox').val();
+            console.log(search_text);
+            var filteredData = {
+                category: animals_data.category.filter(function(d) {
+                    if (d.name.search(search_text) > -1) {
+                            return true;
+                        }
+                        //   if(d.description.search(search_text) > -1){
+                        //   return true;
+                        //   }
+                        return false;
+                })
+            };
+            var html = animals_template(filteredData);
+            $('#contentMAIN').html(html);
         }
-        if(d.description.search(search_text) > -1){
-          return true;
-        }
-        return false;
-      })
-    };
-    var html = template(filteredData);
-    $('#contentMAIN').html(html);
-  }
-});
+    });
+
+
 });
